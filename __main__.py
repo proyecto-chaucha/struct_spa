@@ -70,7 +70,7 @@ def main(rut):
         last_tx = get('https://explorer.cha.terahash.cl/api/tx/' + i).json()
         for j in last_tx['vout']:
             script = j['scriptPubKey']['asm']
-            if script.find('OP_RETURN') == 0:
+            if script.find('OP_RETURN') == 0 and script.find('616363696f6e6973746173') > 0:
                 last_hodl = script.replace('OP_RETURN ','')
                 flag = False
                 if len(last_hodler_changes) > 0:
